@@ -1,7 +1,6 @@
 """
 A faire :
         - créer une méthode weapons commune pour la classe Playeur et sa fille Agent_Smith
-        - si utilisateur veut mettre fin au programme ==> taper "q" et qu'il y ait pas de message d'erreur
         - Comment calculer les résultats entre les différents choix ?
         - comment alimenter un compteur de points ?
 """
