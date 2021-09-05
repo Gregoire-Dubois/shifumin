@@ -1,0 +1,61 @@
+"""
+A faire :
+        - créer une méthode weapons commune pour la classe Playeur et sa fille Agent_Smith
+        - si utilisateur veut mettre fin au programme ==> taper "q" et qu'il y ait pas de message d'erreur
+        - Comment calculer les résultats entre les différents choix ?
+        - comment alimenter un compteur de points ?
+"""
+
+from random import randint
+
+class Playeur :
+    # générer la class du joueur
+    def __init__(self, name='joueur', points=0, choice=0):
+        self.name = name
+        self.points = points
+        self.choice = choice
+
+    def presentation_playeur(self, name=""):
+        self.name = input("Quel est le nom du joueur ?")
+        if self.name == "":
+            self.name ="Néo"
+            print(f"Le joueur s'appelle {self.name.title()}, a {self.points} point")
+        else:
+            print(f"Le joueur s'appelle {self.name.title()}, a {self.points} point")
+
+    def count_points(self):
+        pass
+
+    def make_choice(self):
+            ok = True
+            while ok:
+
+                weapons = ['pierre', 'feuille', 'ciseaux']
+                size = len(weapons)
+                choice = input("Entrez 0 pour 'Pierre', 1 pour 'Feuille' 2 pour les Ciseaux ou tapez 'Q pour quitter'")
+
+                if int(choice) >= 0 and int(choice) < size: #limitation de la saisie de valeur par l'utilisateur
+                    print(f"{self.name} attaque avec {weapons[int(choice)]}")
+
+                elif choice == "q":
+                    print("fin du code")
+                    break
+
+#ValueError à traiter
+
+class Agent_Smith(Playeur):
+    # la class de l'odinateur pour jouer automatiquement
+    def __init__(self, name='Agent Smith', points=0, automatic_choice=0):
+        super().__init__(name, points=0)
+        self.automatic_choice = automatic_choice
+
+    def presentation_playeur(self):
+        self.name = "Agent Smith"
+
+    def count_points(self):
+        pass
+
+    def make_choice(self):
+        weapons = ['pierre', 'feuille', 'ciseaux'] #liste des armes
+        automatic_choice = randint(0,2) #choix aléatoire de l'arme
+        print(f"{self.name} joue avec : ", weapons[automatic_choice]) # affichage de l'arme
